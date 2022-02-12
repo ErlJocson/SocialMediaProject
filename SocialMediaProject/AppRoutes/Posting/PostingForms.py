@@ -1,0 +1,10 @@
+from tokenize import String
+from wsgiref.validate import validator
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired
+
+class AddPost(FlaskForm):
+    title   = StringField("Title: ", validators=[DataRequired()])
+    content = TextAreaField("Content: ", validators=[DataRequired()])
+    submit  = SubmitField('Post')
