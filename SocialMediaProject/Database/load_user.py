@@ -31,7 +31,7 @@ class User(UserMixin):
 def load_user(user_id):
    conn = get_db_connection()
    curs = conn.cursor()
-   curs.execute("SELECT * FROM user WHERE id=?",[user_id])
+   curs.execute("SELECT * FROM users WHERE id=?",[user_id])
    user = curs.fetchone()
    if user is None:
       return None
