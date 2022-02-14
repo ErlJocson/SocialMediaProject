@@ -1,0 +1,67 @@
+:root {
+  --dark-color: rgb(63, 58, 58);
+  --dark-gradient-color: linear-gradient(
+    90deg,
+    rgba(63, 58, 58, 1) 16%,
+    rgba(38, 37, 37, 1) 49%,
+    rgba(61, 60, 60, 1) 95%
+  );
+
+  --light-color: rgb(182, 182, 182);
+  --light-gradient-color: linear-gradient(
+    90deg,
+    rgba(182, 182, 182, 1) 16%,
+    rgba(255, 255, 255, 1) 49%,
+    rgba(169, 169, 169, 1) 95%
+  );
+
+  --blue-color: rgb(76, 170, 196);
+  --blue-gradient-color: linear-gradient(
+    90deg,
+    rgba(76, 170, 196, 1) 16%,
+    rgba(23, 174, 215, 1) 49%,
+    rgba(49, 141, 166, 1) 95%
+  );
+
+  --red-color: rgb(245, 142, 142);
+  --red-gradient-color: linear-gradient(
+    90deg,
+    rgba(245, 142, 142, 1) 16%,
+    rgba(231, 82, 82, 1) 48%,
+    rgba(220, 105, 105, 1) 95%
+  );
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  line-height: 1.5;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important ;
+    scroll-behavior: auto !important;
+  }
+}
