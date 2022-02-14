@@ -1,0 +1,43 @@
+.authenticatin-form-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+}
+
+form {
+  width: 40%;
+  margin: auto;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+form p a {
+  color: gray;
+  text-decoration: none;
+}
+
+form p {
+  font-size: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.label {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.input {
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.btn {
+  border-radius: 10px;
+  width: 50%;
+}

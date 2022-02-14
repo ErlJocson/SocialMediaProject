@@ -30,6 +30,8 @@
     rgba(231, 82, 82, 1) 48%,
     rgba(220, 105, 105, 1) 95%
   );
+
+  --shadow: 0 10px 30px #888888;
 }
 
 *,
@@ -46,6 +48,7 @@
 
 body {
   line-height: 1.5;
+  background: var(--light-gradient-color);
 }
 
 input,
@@ -64,4 +67,14 @@ select {
     transition-duration: 0.01ms !important ;
     scroll-behavior: auto !important;
   }
+}
+
+.danger {
+  background: var(--red-color);
+  background: var(--red-gradient-color);
+}
+
+.success {
+  background: var(--blue-color);
+  background: var(--blue-gradient-color);
 }
