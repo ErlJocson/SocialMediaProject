@@ -1,3 +1,18 @@
 {% extends 'layout.html' %}
 {% block content %}
+
+
+<h2>Registration form</h2>
+
+<form method="POST">
+    {{ register_form.csrf_token() }}
+    <div>{{ register_form.email.label }} {{ register_form.email }}</div>
+    <div>{{ register_form.first_name.label }} {{ register_form.first_name }}</div>
+    <div>{{ register_form.middle_name.label }} {{ register_form.middle_name }}</div>
+    <div>{{ register_form.last_name.label }} {{ register_form.last_name }}</div>
+    <div>{{ register_form.password.label }} {{ register_form.password }}</div>
+    <div>{{ register_form.confirm_password.label }} {{ register_form.confirm_password }}</div>
+    <div>{{ register_form.submit }}</div>
+</form>
+
 {% endblock %}

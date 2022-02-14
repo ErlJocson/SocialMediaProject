@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, EmailField, PasswordField
-from wtforms.validators import DataRequired, EqualTo
+from wtforms.validators import DataRequired, ValidationError
 
 class LoginForm(FlaskForm):
     email    = EmailField('Email: ', validators=[DataRequired()])
@@ -13,5 +13,5 @@ class RegisterForm(FlaskForm):
     middle_name      = StringField('Middle name: ')
     last_name        = StringField('Last name: ', validators=[DataRequired()])
     password         = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm password:', validators=[DataRequired(), EqualTo('password')])
+    confirm_password = PasswordField('Confirm password:', validators=[DataRequired()])
     submit           = SubmitField('Create account')
