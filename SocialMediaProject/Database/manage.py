@@ -22,5 +22,9 @@ def adding_new_users(details):
         'INSERT INTO users (first_name, last_name, middle_name, email, password) VALUES (?,?,?,?,?)',
         [details['first_name'], details['last_name'], details['middle_name'], details['email'], details['password']]
     )
+
+    cur.execute('SELECT * FROM users WHERE email=?', [details['email']])
+    new = cur.fetchone()[0]
     conn.commit()
     conn.close()
+    return new

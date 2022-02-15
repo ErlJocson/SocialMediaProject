@@ -1,7 +1,8 @@
 from flask import render_template, request, flash, redirect, url_for
-from ... import app
+from ... import app, load_user
 from .AuthForms import *
 from SocialMediaProject.Database.manage import *
+from flask_login import login_user, logout_user
 
 @app.route('/login', methods=["POST", "GET"])
 def login():
@@ -10,14 +11,19 @@ def login():
         email = login_form.email.data
         password = login_form.password.data
         user_to_login = check_if_email_exist(email)
+
         if not user_to_login:
             flash('Email does not exist!', 'danger')
             return redirect(url_for('login'))
+
         if not user_to_login[-1] == password:
             flash('Wrong password!', 'danger')
             return redirect(url_for('login'))
-        # login the user
+
+        login_user(load_user(user_to_login[0]))
+        flash(f'Welcome back {user_to_login[1]}!', 'success')
         return redirect(url_for('index'))
+
     return render_template(
         'Authentication/login.html',
         title='Login',
@@ -43,7 +49,7 @@ def register():
             flash('Passwords does not match!', 'danger')
             return redirect(url_for('register'))
         
-        adding_new_users(
+        new_user_id = adding_new_users(
             {
                 "email":email,
                 "first_name":first_name,
@@ -52,11 +58,18 @@ def register():
                 "password":password
             }
         )
+
+        login_user(load_user(new_user_id))
         flash(f'Welcome {first_name}!', 'success')
-        # login the new user
         return redirect(url_for('index'))
+
     return render_template(
         'Authentication/register.html',
         title="Register",
         register_form=register_form
     )
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
