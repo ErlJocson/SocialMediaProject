@@ -77,3 +77,15 @@ select {
   background: var(--blue-color);
   background: var(--blue-gradient-color);
 }
+
+.flashes {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.flashes p {
+  width: 50%;
+  margin: auto;
+}
