@@ -1,6 +1,7 @@
-from flask import render_template, request, flash
+from flask import render_template, request, flash, redirect, url_for
 from ... import app
 from .AuthForms import *
+from SocialMediaProject.Database.manage import *
 
 @app.route('/login', methods=["POST", "GET"])
 def login():
@@ -25,17 +26,34 @@ def register():
         last_name = register_form.last_name.data
         password = register_form.password.data
         confirm_password = register_form.confirm_password.data
+        
+        if check_if_email_exist(email):
+            flash("Email is already used!", "danger")
+            return render_template(
+                'Authentication/register.html',
+                title="Register",
+                register_form=register_form
+            )
 
         if password != confirm_password:
-            flash('Passwords does not match!')
+            flash('Passwords does not match!', 'danger')
             return render_template(
                 'Authentication/register.html',
                 title="Register",
                 register_form=register_form
             )
         
-        # add a validation for email
-        # then add the new user
+        adding_new_users(
+            {
+                "email":email,
+                "first_name":first_name,
+                "middle_name":middle_name,
+                "last_name":last_name,
+                "password":password
+            }
+        )
+        # login the new user
+        return redirect(url_for('index'))
     return render_template(
         'Authentication/register.html',
         title="Register",

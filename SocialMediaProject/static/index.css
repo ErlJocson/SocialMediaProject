@@ -34,6 +34,10 @@
   --shadow: 0 10px 30px #888888;
 }
 
+body {
+  background: var(--light-color);
+}
+
 *,
 *::after,
 *::before {
@@ -44,11 +48,6 @@
   margin: 0;
   padding: 0;
   font-family: "Courier New", Courier, monospace;
-}
-
-body {
-  line-height: 1.5;
-  background: var(--light-gradient-color);
 }
 
 input,

@@ -44,5 +44,11 @@ cur = conn.cursor()
 #     """
 # )
 
+cur.execute(
+    'select * from users'
+)
+
+print(cur.fetchall())
+
 conn.commit()
 conn.close()
