@@ -41,3 +41,8 @@ form p {
   border-radius: 10px;
   width: 50%;
 }
+
+.text {
+  resize: none;
+  padding: 6px;
+}

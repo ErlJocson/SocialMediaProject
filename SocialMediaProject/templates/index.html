@@ -1,5 +1,12 @@
-{% extends 'layout.html' %}
-{% block content %}
-
+{% extends 'layout.html' %} {% block content %}
+<div class="container">
+  <form action="" method="POST">
+    <div class="form-group">
+      {{ post_form.content.label(class="label") }} {{
+      post_form.content(class="text") }}
+    </div>
+    <div>{{ post_form.submit(class="btn success") }}</div>
+  </form>
+</div>
 
 {% endblock %}

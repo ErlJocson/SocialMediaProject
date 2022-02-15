@@ -7,7 +7,7 @@
     rgba(61, 60, 60, 1) 95%
   );
 
-  --light-color: rgb(182, 182, 182);
+  --light-color: rgb(228, 228, 228);
   --light-gradient-color: linear-gradient(
     90deg,
     rgba(182, 182, 182, 1) 16%,
@@ -76,6 +76,12 @@ select {
 .success {
   background: var(--blue-color);
   background: var(--blue-gradient-color);
+}
+
+.container {
+  width: 90%;
+  margin: 20px auto 0 auto;
+  min-height: calc(100vh - 80px);
 }
 
 .flashes {

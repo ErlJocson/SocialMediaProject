@@ -12,6 +12,10 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='form.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='navigation.css') }}"
+    />
     <title>Social | {{ title }}</title>
   </head>
   <body>
@@ -20,7 +24,19 @@
     <div class="flashes {{ category }}">
       <p>{{ message }}</p>
     </div>
-    {% endfor %} {% endif %} {% endwith %}
+    {% endfor %} {% endif %} {% endwith %} {% if current_user.is_authenticated
+    %}
+    <nav>
+      <div class="left-container">
+        <a href="{{ url_for('index') }}" class="nav-items">home</a>
+        <a href="#" class="nav-items">messages</a>
+      </div>
+      <div class="right-container">
+        <a href="#" class="nav-items">account details</a>
+        <a href="{{ url_for('logout') }}" class="nav-items">logout</a>
+      </div>
+    </nav>
+    {% endif %}
     <!--  -->
     {% block content %} {% endblock %}
   </body>

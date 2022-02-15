@@ -20,7 +20,6 @@ cur.execute(
     """
         CREATE TABLE posts(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            title TEXT NOT NULL,
             content TEXT NOT NULL,
             date TIMESTAMP DEFAULT (DATETIME('now')),
             likes INTEGER NOT NULL DEFAULT 0,
