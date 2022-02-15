@@ -9,7 +9,15 @@ def login():
     if request.method == "POST":
         email = login_form.email.data
         password = login_form.password.data
-        # check if user exist
+        user_to_login = check_if_email_exist(email)
+        if not user_to_login:
+            flash('Email does not exist!', 'danger')
+            return redirect(url_for('login'))
+        if not user_to_login[-1] == password:
+            flash('Wrong password!', 'danger')
+            return redirect(url_for('login'))
+        # login the user
+        return redirect(url_for('index'))
     return render_template(
         'Authentication/login.html',
         title='Login',
@@ -29,19 +37,11 @@ def register():
         
         if check_if_email_exist(email):
             flash("Email is already used!", "danger")
-            return render_template(
-                'Authentication/register.html',
-                title="Register",
-                register_form=register_form
-            )
+            return redirect(url_for('register'))
 
         if password != confirm_password:
             flash('Passwords does not match!', 'danger')
-            return render_template(
-                'Authentication/register.html',
-                title="Register",
-                register_form=register_form
-            )
+            return redirect(url_for('register'))
         
         adding_new_users(
             {
@@ -52,6 +52,7 @@ def register():
                 "password":password
             }
         )
+        flash(f'Welcome {first_name}!', 'success')
         # login the new user
         return redirect(url_for('index'))
     return render_template(
