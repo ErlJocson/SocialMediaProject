@@ -3,7 +3,8 @@ from SocialMediaProject import app
 from flask_login import login_required, current_user
 from .PostForm import *
 from ...Database.manage_post import *
-import datetime
+from ...Database.manage_users import check_if_email_exist
+
 
 @app.route('/', methods=["GET", "POST"])
 @login_required
@@ -27,4 +28,14 @@ def index():
         title="Home",
         post_form=post_form,
         posts=posts
+    )
+
+@app.route('/details')
+@login_required
+def details():
+    details = check_if_email_exist(current_user.email)
+    return render_template(
+        'account_details.html',
+        title='Account',
+        details=details
     )
