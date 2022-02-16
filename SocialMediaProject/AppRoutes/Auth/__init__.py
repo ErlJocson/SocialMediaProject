@@ -1,7 +1,7 @@
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from ... import app, load_user
 from .AuthForms import *
-from SocialMediaProject.Database.manage import *
+from SocialMediaProject.Database.manage_users import *
 from flask_login import login_user, logout_user
 
 @app.route('/login', methods=["POST", "GET"])

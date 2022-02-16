@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_admin import Admin
 from flask_login import LoginManager, UserMixin
-from .Database.manage import get_db_connection
+from .Database.manage_users import get_db_connection
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 admin = Admin(app, name='Social Media', template_mode='bootstrap3')
