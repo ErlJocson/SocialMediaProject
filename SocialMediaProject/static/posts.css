@@ -37,5 +37,10 @@
   width: 30%;
   text-decoration: none;
   color: black;
+  border-radius: 10px;
   padding: 6px 20px;
+}
+
+.move-posts a:hover {
+  background: var(--light-gradient-color);
 }

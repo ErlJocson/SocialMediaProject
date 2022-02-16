@@ -3,12 +3,14 @@ from SocialMediaProject import app
 from flask_login import login_required, current_user
 from .PostForm import *
 from ...Database.manage_post import *
+import datetime
 
 @app.route('/', methods=["GET", "POST"])
 @login_required
 def index():
     post_form = PostForm()
     posts = get_posts()
+
     if request.method == "POST":
         content = post_form.content.data
         add_post(
@@ -19,6 +21,7 @@ def index():
         )
         flash('New post uploaded!', 'success')
         return redirect(url_for('index'))
+
     return render_template(
         'index.html',
         title="Home",

@@ -16,7 +16,7 @@ def get_posts():
     conn = get_db_connection()
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM posts")
+    cur.execute("SELECT * FROM posts ORDER BY date DESC")
     posts = cur.fetchall()
     conn.close()
 
