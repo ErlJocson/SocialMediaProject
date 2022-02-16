@@ -8,6 +8,7 @@ from ...Database.manage_post import *
 @login_required
 def index():
     post_form = PostForm()
+    posts = get_posts()
     if request.method == "POST":
         content = post_form.content.data
         add_post(
@@ -21,5 +22,6 @@ def index():
     return render_template(
         'index.html',
         title="Home",
-        post_form=post_form
+        post_form=post_form,
+        posts=posts
     )

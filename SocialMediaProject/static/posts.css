@@ -1,0 +1,41 @@
+.posts-container {
+  width: 60%;
+  margin: 30px auto 20px auto;
+  text-align: center;
+  box-shadow: 0 10px 10px #888888;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-header h3 {
+  letter-spacing: 2px;
+  margin: 10px 0 0 20px;
+}
+
+.post-header span {
+  margin: 10px 20px 0 0;
+  color: gray;
+}
+
+.posts-contents {
+  margin: 10px;
+}
+
+.move-posts {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid rgb(184, 184, 184);
+}
+
+.move-posts a {
+  width: 30%;
+  text-decoration: none;
+  color: black;
+  padding: 6px 20px;
+}
