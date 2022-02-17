@@ -18,8 +18,8 @@
       <p>{{ post[1] }}</p>
     </div>
     <div class="move-posts">
-      <a href="#">{{ post[3] }} Like</a>
-      <a href="#">Comment</a>
+      <p onclick="add_like( '{{post[3]}}' )">{{ post[3] }} Like</p>
+      <p href="#">Comment</p>
     </div>
   </div>
   {% endfor %}
