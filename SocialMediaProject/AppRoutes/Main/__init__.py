@@ -39,3 +39,10 @@ def details():
         title='Account',
         details=details
     )
+
+@app.route('/add_likes/<post_id>', methods=["POST"])
+@login_required
+def add_likes(post_id):
+    if request.method == "POST":
+        add_a_like(post_id)
+    return {'msg':True}
