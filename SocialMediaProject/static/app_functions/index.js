@@ -1,5 +1,4 @@
 function add_like(like) {
-  new_like = like + 1;
-  console.log(new_like);
-  return new_like;
+  new_like = parseInt(like) + 1;
+  document.getElementById("likes").innerHTML = new_like;
 }

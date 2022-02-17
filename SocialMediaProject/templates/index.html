@@ -18,7 +18,9 @@
       <p>{{ post[1] }}</p>
     </div>
     <div class="move-posts">
-      <p onclick="add_like( '{{post[3]}}' )">{{ post[3] }} Like</p>
+      <p onclick="add_like( '{{post[3]}}' )">
+        <span id="likes"> {{ post[3] }} </span> Like
+      </p>
       <p href="#">Comment</p>
     </div>
   </div>
