@@ -8,7 +8,7 @@
     <th>User id</th>
   </tr>
 
-  {% for post in posts %}
+  {% if posts %} {% for post in posts %}
   <tr>
     <td>{{ post[0] }}</td>
     <td>{{ post[1] }}</td>
@@ -16,6 +16,14 @@
     <td>{{ post[3] }}</td>
     <td>{{ post[4] }}</td>
   </tr>
-  {% endfor %}
+  {% endfor %} {% else %}
+  <tr>
+    <td>None</td>
+    <td>None</td>
+    <td>None</td>
+    <td>None</td>
+    <td>None</td>
+  </tr>
+  {% endif %}
 </table>
 {% endblock %}
