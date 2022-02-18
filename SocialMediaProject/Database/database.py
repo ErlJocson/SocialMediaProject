@@ -43,11 +43,14 @@ cur = conn.cursor()
 #     """
 # )
 
-cur.execute(
-    'select * from posts'
-)
+# cur.execute(
+#     """
+#         SELECT posts.id, posts.content, posts.date, posts.likes, posts.user_id, users.first_name, users.last_name 
+#         FROM posts INNER JOIN users on posts.id=users.id
+#     """
+# )
 
-print(cur.fetchall())
+# print(cur.fetchall())
 
 conn.commit()
 conn.close()

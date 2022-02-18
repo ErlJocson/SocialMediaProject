@@ -16,7 +16,12 @@ def get_posts():
     conn = get_db_connection()
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM posts ORDER BY date DESC")
+    cur.execute(
+        """
+            SELECT posts.id, posts.content, posts.date, posts.likes, posts.user_id, users.first_name, users.last_name 
+            FROM posts INNER JOIN users on posts.id=users.id
+        """
+    )
     posts = cur.fetchall()
     conn.close()
 

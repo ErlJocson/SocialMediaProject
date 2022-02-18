@@ -5,7 +5,6 @@ from .PostForm import *
 from ...Database.manage_post import *
 from ...Database.manage_users import check_if_email_exist
 
-
 @app.route('/', methods=["GET", "POST"])
 @login_required
 def index():
@@ -43,6 +42,5 @@ def details():
 @app.route('/add_likes/<post_id>', methods=["POST"])
 @login_required
 def add_likes(post_id):
-    if request.method == "POST":
-        add_a_like(post_id)
+    add_a_like(post_id)
     return {'msg':True}
