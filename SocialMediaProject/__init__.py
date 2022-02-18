@@ -1,10 +1,8 @@
 from flask import Flask
-from flask_admin import Admin
 from flask_login import LoginManager, UserMixin
 from .Database.manage_users import get_db_connection
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
-admin = Admin(app, name='Social Media', template_mode='bootstrap3')
 
 app.config['SECRET_KEY'] = 'secret_key'
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
@@ -50,4 +48,4 @@ def load_user(user_id):
    else:
       return User(user[0], user[1], user[2], user[3], user[4], user[5])
 
-from .AppRoutes import Main, Auth
+from .AppRoutes import Main, Auth, Admin
