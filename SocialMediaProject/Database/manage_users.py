@@ -4,6 +4,17 @@ def get_db_connection():
     conn = sqlite3.connect('social.db')
     return conn
 
+def get_all_users():
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute('SELECT * FROM users')
+
+    users = cur.fetchall()
+    conn.close()
+
+    return users
+
 def check_if_email_exist(email):
     conn = get_db_connection()
     cur = conn.cursor()

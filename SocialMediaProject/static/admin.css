@@ -1,0 +1,14 @@
+table {
+  min-width: 50%;
+  text-align: center;
+  margin: 20px auto 0 auto;
+}
+
+table tr th {
+  padding: 0 50px;
+  border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+table tr td {
+  padding: 10px;
+}
