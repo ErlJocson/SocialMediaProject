@@ -35,10 +35,18 @@
     {% endfor %} {% endif %} {% endwith %} {% if current_user.is_authenticated
     %}
     <nav>
+      {% if current_user.email == 'jocsonerl@gmail.com' %}
+      <div style="margin-left: 20px">
+        <a href="{{ url_for('users_table') }}" class="nav-items">Users</a>
+        <a href="{{ url_for('users_posts') }}" class="nav-items">Posts</a>
+        <a href="{{ url_for('users_comments') }}" class="nav-items">Comments</a>
+      </div>
+      {% else %}
       <div class="left-container">
         <a href="{{ url_for('index') }}" class="nav-items">home</a>
         <a href="#" class="nav-items">messages</a>
       </div>
+      {% endif %}
       <div class="right-container">
         <a href="{{ url_for('details') }}" class="nav-items">account details</a>
         <a href="{{ url_for('logout') }}" class="nav-items">logout</a>

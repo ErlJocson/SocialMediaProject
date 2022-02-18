@@ -6,9 +6,9 @@ table {
 
 table tr th {
   padding: 0 50px;
-  border-bottom: 2px solid rgb(0, 0, 0);
 }
 
 table tr td {
   padding: 10px;
+  border: 1px solid black;
 }
