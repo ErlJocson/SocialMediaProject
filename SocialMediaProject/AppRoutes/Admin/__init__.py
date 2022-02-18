@@ -6,16 +6,23 @@ from flask import render_template
 @app.route('/admin/users')
 @login_required
 def users_table():
-    return render_template('Admin/admin_users.html')
+    return render_template(
+        'Admin/admin_users.html',
+    )
 
 @app.route('/admin/posts')
 @login_required
 def users_posts():
     posts = manage_post.get_posts()
-    print(posts)
-    return render_template('Admin/admin_posts.html')
+    return render_template(
+        'Admin/admin_posts.html',
+        posts=posts
+    )
 
 @app.route('/admin/comments')
 @login_required
 def users_comments():
-    return render_template('Admin/admin_comments.html')
+
+    return render_template(
+        'Admin/admin_comments.html',
+    )

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %} {% block content %}
+<table>
+  <tr>
+    <th>Post id</th>
+    <th>Post content</th>
+    <th>Date posted</th>
+    <th>Likes</th>
+    <th>User id</th>
+  </tr>
+
+  {% for post in posts %}
+  <tr>
+    <td>{{ post[0] }}</td>
+    <td>{{ post[1] }}</td>
+    <td>{{ post[2] }}</td>
+    <td>{{ post[3] }}</td>
+    <td>{{ post[4] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
