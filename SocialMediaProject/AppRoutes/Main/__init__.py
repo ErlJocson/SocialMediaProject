@@ -39,8 +39,18 @@ def details():
         details=details
     )
 
-@app.route('/add_likes/<post_id>', methods=["POST"])
+# @app.route('/post')
+# @login_required
+# def post():
+#     comment_form = CommentForm()
+#     return render_template(
+#         'post.html', 
+#         title='Post',
+#         comment_form = comment_form
+#     )
+
+@app.route('/add-like/<post_id>', methods=["POST", "GET"])
 @login_required
-def add_likes(post_id):
+def add_like(post_id):
     add_a_like(post_id)
-    return {'msg':True}
+    return redirect(url_for('index'))

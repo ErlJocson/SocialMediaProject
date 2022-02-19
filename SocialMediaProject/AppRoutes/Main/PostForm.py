@@ -5,3 +5,7 @@ from wtforms.validators import DataRequired, Length
 class PostForm(FlaskForm):
     content = TextAreaField("Write your new post: ", validators=[DataRequired(), Length(max=150)])
     submit = SubmitField("Add Post")
+
+class CommentForm(FlaskForm):
+    content = TextAreaField("Add a comment: ", validators=[DataRequired(), Length(max=150)])
+    submit = SubmitField("Add comment")

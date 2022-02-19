@@ -18,10 +18,10 @@
       <p>{{ post[1] }}</p>
     </div>
     <div class="move-posts">
-      <p onclick="add_like('{{post[3]}}')">
-        <span id="likes"> {{ post[3] }} </span> Like
-      </p>
-      <p href="#">Comment</p>
+      <a href="{{ url_for('add_like', post_id=post[0]) }}"
+        ><span id="likes"> {{ post[3] }} </span> Like</a
+      >
+      <a href="#">Comment</a>
     </div>
   </div>
   {% endfor %}
