@@ -5,6 +5,9 @@ def get_db_connection():
     return conn
 
 def get_all_users():
+    """
+        Returns all of the users
+    """
     conn = get_db_connection()
     cur = conn.cursor()
 
@@ -16,6 +19,9 @@ def get_all_users():
     return users
 
 def check_if_email_exist(email):
+    """
+        Returns a user if email is in the database
+    """
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(
