@@ -10,7 +10,7 @@ from ...Database.manage_users import check_if_email_exist
 def index():
     post_form = PostForm()
     posts = get_posts()
-
+    print(posts)
     if request.method == "POST":
         content = post_form.content.data
         add_post(
@@ -39,15 +39,15 @@ def details():
         details=details
     )
 
-# @app.route('/post')
-# @login_required
-# def post():
-#     comment_form = CommentForm()
-#     return render_template(
-#         'post.html', 
-#         title='Post',
-#         comment_form = comment_form
-#     )
+@app.route('/post/<post_id>')
+@login_required
+def post(post_id):
+    comment_form = CommentForm()
+    return render_template(
+        'post.html', 
+        title='Post',
+        comment_form = comment_form
+    )
 
 @app.route('/add-like/<post_id>', methods=["POST", "GET"])
 @login_required

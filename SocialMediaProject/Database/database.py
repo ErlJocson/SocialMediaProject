@@ -50,7 +50,9 @@ cur = conn.cursor()
 #     """
 # )
 
-# print(cur.fetchall())
+cur.execute('SELECT * FROM posts')
+
+print(cur.fetchall())
 
 conn.commit()
 conn.close()

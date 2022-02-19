@@ -21,7 +21,7 @@
       <a href="{{ url_for('add_like', post_id=post[0]) }}"
         ><span id="likes"> {{ post[3] }} </span> Like</a
       >
-      <a href="#">Comment</a>
+      <a href="{{ url_for('post', post_id=post[0]) }}">Comment</a>
     </div>
   </div>
   {% endfor %}

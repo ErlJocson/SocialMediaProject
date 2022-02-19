@@ -12,6 +12,16 @@ def add_post(details):
     conn.commit()
     conn.close()
 
+def admin_get_posts():
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM posts")
+    posts = cur.fetchall()
+
+    conn.close()
+    return posts
+
 def get_posts():
     conn = get_db_connection()
     cur = conn.cursor()
@@ -19,7 +29,7 @@ def get_posts():
     cur.execute(
         """
             SELECT posts.id, posts.content, posts.date, posts.likes, posts.user_id, users.first_name, users.last_name 
-            FROM posts INNER JOIN users on posts.id=users.id
+            FROM posts INNER JOIN users on posts.user_id=users.id
         """
     )
     posts = cur.fetchall()

@@ -16,7 +16,7 @@ def users_table():
 @app.route('/admin/posts')
 @login_required
 def users_posts():
-    posts = manage_post.get_posts()
+    posts = manage_post.admin_get_posts()
     return render_template(
         'Admin/admin_posts.html',
         title='Posts',
