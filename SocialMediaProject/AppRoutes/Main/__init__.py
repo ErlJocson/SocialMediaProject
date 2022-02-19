@@ -10,7 +10,7 @@ from ...Database.manage_users import check_if_email_exist
 def index():
     post_form = PostForm()
     posts = get_posts()
-    print(posts)
+    
     if request.method == "POST":
         content = post_form.content.data
         add_post(

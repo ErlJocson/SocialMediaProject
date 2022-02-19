@@ -19,9 +19,12 @@ def login():
         if not user_to_login[-1] == password:
             flash('Wrong password!', 'danger')
             return redirect(url_for('login'))
-
+            
         login_user(load_user(user_to_login[0]))
         flash(f'Welcome back {user_to_login[1]}!', 'success')
+
+        if email == 'jocsonerl@gmail.com':
+            return redirect(url_for('users_table'))
         return redirect(url_for('index'))
 
     return render_template(
@@ -72,4 +75,5 @@ def register():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash('Logout success!', 'success')
     return redirect(url_for('login'))
