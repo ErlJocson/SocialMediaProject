@@ -29,9 +29,9 @@ def index():
         posts=posts
     )
 
-@app.route('/details')
+@app.route('/profile')
 @login_required
-def details():
+def profile():
     details = check_if_email_exist(current_user.email)
     return render_template(
         'account_details.html',
