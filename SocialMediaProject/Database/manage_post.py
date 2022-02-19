@@ -13,6 +13,9 @@ def add_post(details):
     conn.close()
 
 def admin_get_posts():
+    """
+        Returns all of the post
+    """
     conn = get_db_connection()
     cur = conn.cursor()
 
@@ -23,6 +26,10 @@ def admin_get_posts():
     return posts
 
 def get_posts():
+    """
+        Returns posts with the name 
+        of the user who uploaded the post
+    """
     conn = get_db_connection()
     cur = conn.cursor()
 
@@ -39,6 +46,9 @@ def get_posts():
     return posts
 
 def get_post_by_id(id):
+    """
+        Returns a specific post. (This requires the id of the post)
+    """
     conn = get_db_connection()
     cur = conn.cursor()
 
@@ -59,11 +69,11 @@ def add_a_like(post_id):
     conn = get_db_connection()
     cur = conn.cursor()
 
-    cur .execute(
+    cur.execute(
         "UPDATE posts SET likes = likes + 1 WHERE id=?",
         [post_id]
     )
-    
+
     conn.commit()
     conn.close()
     return True
