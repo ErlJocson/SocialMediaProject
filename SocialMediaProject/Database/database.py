@@ -11,6 +11,7 @@ cur.execute(
             last_name TEXT NOT NULL,
             middle_name TEXT,
             email TEXT NOT NULL UNIQUE,
+            profile_pic BLOB,
             password TEXT NOT NULL
         )
     """
