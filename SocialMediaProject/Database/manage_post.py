@@ -35,7 +35,7 @@ def get_posts():
 
     cur.execute(
         """
-            SELECT posts.id, posts.content, posts.date, posts.likes, posts.user_id, users.first_name, users.last_name 
+            SELECT posts.id, posts.content, posts.date, posts.user_id, users.first_name, users.last_name 
             FROM posts INNER JOIN users ON posts.user_id=users.id
             ORDER BY posts.date DESC
         """
