@@ -23,9 +23,21 @@ cur.execute(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             content TEXT NOT NULL,
             date TIMESTAMP DEFAULT (DATETIME('now')),
-            likes INTEGER NOT NULL DEFAULT 0,
             user_id INTEGER NOT NULL,
-            FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        )
+    """
+)
+
+cur.execute(
+    """
+        CREATE TABLE likes(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            post_id INTEGER NOT NULL,
+            is_like INTEGER NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
         )
     """
 )
@@ -43,16 +55,6 @@ cur.execute(
         )
     """
 )
-
-# cur.execute(
-#     """
-#         SELECT posts.id, posts.content, posts.date, posts.likes, posts.user_id, users.first_name, users.last_name 
-#         FROM posts INNER JOIN users on posts.id=users.id
-#     """
-# )
-
-
-# print(cur.fetchall())
 
 conn.commit()
 conn.close()
