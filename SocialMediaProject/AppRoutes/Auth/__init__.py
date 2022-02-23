@@ -11,7 +11,7 @@ def login():
         email = login_form.email.data
         password = login_form.password.data
         user_to_login = check_if_email_exist(email)
-
+        
         if not user_to_login:
             flash('Email does not exist!', 'danger')
             return redirect(url_for('login'))

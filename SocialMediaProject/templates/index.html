@@ -8,23 +8,23 @@
     <div>{{ post_form.submit(class="btn success") }}</div>
   </form>
 
-  {% for post in posts %}
+  {% if posts %} {% for post in posts %}
   <div class="posts-container">
     <div class="post-header">
-      <h3>{{post[5]}} {{ post[6] }}</h3>
-      <span>{{ post[2].split(' ')[0] }}</span>
+      <h3>{{post[4]}} {{ post[5] }}</h3>
+      <span>{{ post[2] }}</span>
     </div>
     <div class="posts-contents">
       <p>{{ post[1] }}</p>
     </div>
     <div class="move-posts">
-      <a href="{{ url_for('add_like', post_id=post[0]) }}"
+      <a href="{{ url_for('like_post', post_id=post[0]) }}"
         ><span id="likes"> {{ post[3] }} </span> Like</a
       >
       <a href="{{ url_for('post', post_id=post[0]) }}">Comment</a>
     </div>
   </div>
-  {% endfor %}
+  {% endfor %} {% endif %}
 </div>
 
 {% endblock %}
