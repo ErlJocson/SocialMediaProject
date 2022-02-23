@@ -60,7 +60,7 @@ def add_a_like(post_id):
     cur = conn.cursor()
 
     cur.execute(
-        "UPDATE likes SET is_like = 1 WHERE id=?",
+        "UPDATE likes SET is_like = 1 WHERE post_id=?",
         [post_id]
     )
 

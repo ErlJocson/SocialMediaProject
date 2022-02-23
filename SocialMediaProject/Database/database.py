@@ -56,14 +56,5 @@ cur = conn.cursor()
 #     """
 # )
 
-# cur.execute(
-#         """
-#             SELECT posts.id, posts.content, posts.date, posts.user_id, users.first_name, users.last_name, COUNT(likes.is_like) 
-#             FROM posts INNER JOIN users ON posts.user_id=users.id
-#             INNER JOIN likes ON posts.id=likes.id
-#             ORDER BY posts.date DESC
-#         """
-# )
-
 conn.commit()
 conn.close()
