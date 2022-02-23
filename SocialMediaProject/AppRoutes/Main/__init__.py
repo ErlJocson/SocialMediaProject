@@ -6,11 +6,14 @@ from ...Database.manage_users import check_if_email_exist
 
 main = Blueprint('main', __name__)
 
-@main.route('/home', methods=["GET", "POST"])
+@main.route('/', methods=["GET", "POST"])
 @login_required
 def index():
     post_form = PostForm()
-    posts = get_posts()
+    posts = []
+    for post in get_posts():
+        posts.append(post + get_likes(post[0]))
+    print(posts)
     if request.method == "POST":
         content = post_form.content.data
         add_post(

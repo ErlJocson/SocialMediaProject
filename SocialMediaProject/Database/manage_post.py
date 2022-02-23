@@ -22,10 +22,22 @@ def admin_get_posts():
     conn.close()
     return posts
 
-def get_posts():
+def get_likes(post_id):
     conn = get_db_connection()
     cur = conn.cursor()
 
+    cur.execute(
+        "SELECT is_like FROM likes WHERE post_id=?",
+        [post_id]
+    )
+
+    likes = cur.fetchone()
+    conn.close()
+    return likes
+
+def get_posts():
+    conn = get_db_connection()
+    cur = conn.cursor()
     cur.execute(
         """
             SELECT posts.id, posts.content, posts.date, 
@@ -36,6 +48,7 @@ def get_posts():
     )
     posts = cur.fetchall()
     conn.close()
+    
     return posts
 
 def get_post_by_id(id):
@@ -60,9 +73,11 @@ def add_a_like(post_id):
     cur = conn.cursor()
 
     cur.execute(
-        "UPDATE likes SET is_like = 1 WHERE post_id=?",
+        "UPDATE likes SET is_like = is_like + 1 WHERE post_id=?",
         [post_id]
     )
 
     conn.commit()
     conn.close()
+
+    return True
