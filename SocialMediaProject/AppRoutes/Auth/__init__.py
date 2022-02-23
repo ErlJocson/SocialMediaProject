@@ -1,10 +1,12 @@
-from flask import render_template, flash, redirect, url_for, request
-from ... import app, load_user
+from flask import render_template, flash, redirect, url_for, request, Blueprint
 from .AuthForms import *
 from SocialMediaProject.Database.manage_users import *
 from flask_login import login_user, logout_user
+from .loading_user import load_user
 
-@app.route('/login', methods=["POST", "GET"])
+auth = Blueprint('auth', __name__)
+
+@auth.route('/login', methods=["POST", "GET"])
 def login():
     login_form = LoginForm()
     if request.method == "POST":
@@ -14,18 +16,18 @@ def login():
         
         if not user_to_login:
             flash('Email does not exist!', 'danger')
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
 
         if not user_to_login[-1] == password:
             flash('Wrong password!', 'danger')
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
             
         login_user(load_user(user_to_login[0]))
         flash(f'Welcome back {user_to_login[1]}!', 'success')
 
         if email == 'jocsonerl@gmail.com':
-            return redirect(url_for('users_table'))
-        return redirect(url_for('index'))
+            return redirect(url_for('admin.users_table'))
+        return redirect(url_for('main.index'))
 
     return render_template(
         'Authentication/login.html',
@@ -33,7 +35,7 @@ def login():
         login_form=login_form
     )
 
-@app.route('/register', methods=["POST", "GET"])
+@auth.route('/register', methods=["POST", "GET"])
 def register():
     register_form = RegisterForm()
     if register_form.validate_on_submit():
@@ -46,11 +48,11 @@ def register():
         
         if check_if_email_exist(email):
             flash("Email is already used!", "danger")
-            return redirect(url_for('register'))
+            return redirect(url_for('auth.register'))
 
         if password != confirm_password:
             flash('Passwords does not match!', 'danger')
-            return redirect(url_for('register'))
+            return redirect(url_for('auth.register'))
         
         new_user_id = adding_new_users(
             {
@@ -64,7 +66,7 @@ def register():
 
         login_user(load_user(new_user_id))
         flash(f'Welcome {first_name}!', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
 
     return render_template(
         'Authentication/register.html',
@@ -72,8 +74,8 @@ def register():
         register_form=register_form
     )
 
-@app.route('/logout')
+@auth.route('/logout')
 def logout():
     logout_user()
     flash('Logout success!', 'success')
-    return redirect(url_for('login'))
+    return redirect(url_for('auth.login'))

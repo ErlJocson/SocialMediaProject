@@ -18,10 +18,10 @@
       <p>{{ post[1] }}</p>
     </div>
     <div class="move-posts">
-      <a href="{{ url_for('like_post', post_id=post[0]) }}"
+      <a href="{{ url_for('main.like_post', post_id=post[0]) }}"
         ><span id="likes"> {{ post[3] }} </span> Like</a
       >
-      <a href="{{ url_for('post', post_id=post[0]) }}">Comment</a>
+      <a href="{{ url_for('main.post', post_id=post[0]) }}">Comment</a>
     </div>
   </div>
   {% endfor %} {% endif %}

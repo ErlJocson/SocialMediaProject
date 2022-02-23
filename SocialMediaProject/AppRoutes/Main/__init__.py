@@ -1,11 +1,12 @@
-from flask import render_template, request, flash, redirect, url_for
-from SocialMediaProject import app
+from flask import render_template, request, flash, redirect, url_for, Blueprint
 from flask_login import login_required, current_user
 from .PostForm import *
 from ...Database.manage_post import *
 from ...Database.manage_users import check_if_email_exist
 
-@app.route('/', methods=["GET", "POST"])
+main = Blueprint('main', __name__)
+
+@main.route('/home', methods=["GET", "POST"])
 @login_required
 def index():
     post_form = PostForm()
@@ -19,7 +20,7 @@ def index():
             }
         )
         flash('New post uploaded!', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
         
     return render_template(
         'index.html',
@@ -28,7 +29,7 @@ def index():
         posts=posts
     )
 
-@app.route('/profile')
+@main.route('/profile')
 @login_required
 def profile():
     details = check_if_email_exist(current_user.email)
@@ -38,7 +39,7 @@ def profile():
         details=details
     )
 
-@app.route('/post/<int:post_id>')
+@main.route('/post/<int:post_id>')
 @login_required
 def post(post_id):
     comment_form = CommentForm()
@@ -52,8 +53,8 @@ def post(post_id):
         comment_form = comment_form
     )
 
-@app.route('/add-like/<int:post_id>')
+@main.route('/add-like/<int:post_id>')
 @login_required
 def like_post(post_id):
     add_a_like(post_id)
-    return redirect(url_for('index'))
+    return redirect(url_for('main.index'))

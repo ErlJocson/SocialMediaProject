@@ -1,9 +1,10 @@
-from ... import app
 from ...Database import manage_post, manage_users, manage_comments
 from flask_login import login_required
-from flask import render_template
+from flask import render_template, Blueprint
 
-@app.route('/admin/users')
+admin = Blueprint('admin', __name__)
+
+@admin.route('/users')
 @login_required
 def users_table():
     users = manage_users.get_all_users()
@@ -13,7 +14,7 @@ def users_table():
         users=users
     )
 
-@app.route('/admin/posts')
+@admin.route('/posts')
 @login_required
 def users_posts():
     posts = manage_post.admin_get_posts()
@@ -23,7 +24,7 @@ def users_posts():
         posts=posts
     )
 
-@app.route('/admin/comments')
+@admin.route('/comments')
 @login_required
 def users_comments():
     comments = manage_comments.get_all_comments()
