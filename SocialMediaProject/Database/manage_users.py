@@ -1,17 +1,23 @@
 import sqlite3
 
+ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg'}
+
 def get_db_connection():
     conn = sqlite3.connect('social.db')
     return conn
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 # Use this function before adding images to the database
-def convert_to_binary_data(filename):
-    """
-        Converts digital data to binary data.
-    """
-    with open(filename, 'rb') as file:
-        binary_data = file.read()
-    return binary_data
+# def convert_to_binary_data(filename):
+#     """
+#         Converts digital data to binary data.
+#     """
+#     with open(filename, 'rb') as file:
+#         binary_data = file.read()
+#     return binary_data
 
 def get_all_users():
     """

@@ -9,6 +9,7 @@ form {
   margin: auto;
   box-shadow: var(--shadow);
   padding: 20px;
+  background-color: var(--white);
 }
 
 form p a {

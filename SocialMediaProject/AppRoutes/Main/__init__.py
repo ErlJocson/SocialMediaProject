@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from .PostForm import *
 from ...Database.manage_post import *
 from ...Database.manage_users import check_if_email_exist
+from ...Database.manage_comments import *
 
 main = Blueprint('main', __name__)
 
@@ -42,19 +43,30 @@ def profile():
         details=details
     )
 
-# @main.route('/post/<int:post_id>')
-# @login_required
-# def post(post_id):
-#     comment_form = CommentForm()
-#     current_post = get_post_by_id(post_id)
-#     if request.method == "POST":
-#         content = comment_form.content.data
-#     return render_template(
-#         'post.html', 
-#         title='Post',
-#         current_post = current_post,
-#         comment_form = comment_form
-#     )
+@main.route('/post/<int:post_id>', methods=['GET', 'POST'])
+@login_required
+def post(post_id):
+    comment_form = CommentForm()
+    current_post = get_post_by_id(post_id)
+    comments = get_all_comments()
+    if request.method == "POST":
+        content = comment_form.content.data
+        add_a_comment(
+            {
+                "post_id":post_id,
+                "user_id":current_user.id,
+                "content":content,
+            }
+        )
+        flash('New comment added!', 'success')
+        return redirect(url_for("main.post", post_id=post_id))
+    return render_template(
+        'post.html', 
+        title='Post',
+        current_post = current_post,
+        comment_form = comment_form,
+        comments = comments
+    )
 
 @main.route('/add-like/<post_id>')
 @login_required

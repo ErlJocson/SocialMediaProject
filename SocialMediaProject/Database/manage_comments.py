@@ -7,8 +7,27 @@ def get_all_comments():
     conn = get_db_connection()
     cur = conn.cursor()
 
-    cur.execute('SELECT * FROM comments')
+    cur.execute(
+        """ 
+            SELECT comments.id, comments.content, comments.date, 
+            users.first_name, users.last_name
+            FROM comments INNER JOIN users ON comments.user_id = users.id
+            ORDER BY comments.date
+        """
+    )
     comments = cur.fetchall()
 
     cur.close()
     return comments
+
+def add_a_comment(details):
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute(
+        "INSERT INTO comments (post_id, user_id, content) VALUES (?,?,?)",
+        [details["post_id"],details["user_id"],details["content"]]
+    )
+
+    conn.commit()
+    conn.close()
