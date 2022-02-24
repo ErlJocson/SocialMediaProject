@@ -1,9 +1,8 @@
-from tabnanny import check
 from flask import render_template, request, flash, redirect, url_for, Blueprint
 from flask_login import login_required, current_user
 from .PostForm import *
 from ...Database.manage_post import *
-from ...Database.manage_users import check_if_email_exist
+from ...Database.manage_users import *
 from ...Database.manage_comments import *
 
 main = Blueprint('main', __name__)
@@ -62,7 +61,7 @@ def post(post_id):
         flash('New comment added!', 'success')
         return redirect(url_for("main.post", post_id=post_id))
     return render_template(
-        'post.html', 
+        'post.html',
         title='Post',
         current_post = current_post,
         comment_form = comment_form,
@@ -76,5 +75,6 @@ def like_post(post_id):
         add_a_like(current_user.id, post_id)
         flash('Post liked!', 'success')
         return redirect(url_for('main.index'))
+    remove_like(post_id, current_user.id)
+    flash('You removed the like!', 'danger')
     return redirect(url_for('main.index'))
-    

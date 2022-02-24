@@ -96,3 +96,15 @@ def add_a_like(user_id, post_id):
     conn.commit()
     conn.close()
     return True
+
+def remove_like(post_id, user_id):
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute(
+        "DELETE FROM likes WHERE user_id=? AND post_id=?",
+        [user_id, post_id]
+    )
+
+    conn.commit()
+    conn.close()
