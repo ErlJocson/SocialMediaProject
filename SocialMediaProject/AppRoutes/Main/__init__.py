@@ -42,19 +42,19 @@ def profile():
         details=details
     )
 
-@main.route('/post/<int:post_id>')
-@login_required
-def post(post_id):
-    comment_form = CommentForm()
-    current_post = get_post_by_id(post_id)
-    if request.method == "POST":
-        content = comment_form.content.data
-    return render_template(
-        'post.html', 
-        title='Post',
-        current_post = current_post,
-        comment_form = comment_form
-    )
+# @main.route('/post/<int:post_id>')
+# @login_required
+# def post(post_id):
+#     comment_form = CommentForm()
+#     current_post = get_post_by_id(post_id)
+#     if request.method == "POST":
+#         content = comment_form.content.data
+#     return render_template(
+#         'post.html', 
+#         title='Post',
+#         current_post = current_post,
+#         comment_form = comment_form
+#     )
 
 @main.route('/add-like/<post_id>')
 @login_required

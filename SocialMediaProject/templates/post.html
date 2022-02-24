@@ -1,15 +1,31 @@
 {% extends 'layout.html' %} {% block content %}
-<div class="container">
-  <div class="left">
-    <h3>{{ current_post[5] }} {{ current_post[6] }}</h3>
-    <span>{{ current_post[2].split(' ')[0] }}</span>
+<!-- <div class="container comment-container">
+  <div class="post-content">
+    <div>
+      <h3>{{ current_post[4] }} {{ current_post[5] }}</h3>
+      <span>{{ current_post[2].split(' ')[0] }}</span>
+    </div>
     <p>{{ current_post[1] }}</p>
   </div>
 
-  <form method="POST">
-    <div>{{ comment_form.content.label }} {{ comment_form.content }}</div>
-    <div>{{ comment_form.submit }}</div>
+  <div class="comment-container">
+    <h4>Comments:</h4>
+    <div class="comments">
+      <div>
+        <h4>Jerrald</h4>
+        <span>Kanina lang</span>
+      </div>
+      <p>content</p>
+    </div>
+  </div>
+
+  <form method="POST" class="comment-form">
+    <div>
+      {{ comment_form.content.label(class="label") }} {{
+      comment_form.content(class="text") }}
+    </div>
+    <div>{{ comment_form.submit(class="btn success") }}</div>
   </form>
-</div>
+</div> -->
 
 {% endblock %}

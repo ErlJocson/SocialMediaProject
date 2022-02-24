@@ -45,3 +45,10 @@
 .move-posts a:hover {
   background: var(--light-gradient-color);
 }
+
+/* Comment */
+
+/* .comment-container {
+  display: flex;
+  flex-direction: column;
+} */
