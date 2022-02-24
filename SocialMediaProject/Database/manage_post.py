@@ -68,6 +68,19 @@ def get_post_by_id(id):
     conn.close()
     return post
 
+def get_user_post(user_id):
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT * FROM posts WHERE user_id=?",
+        [user_id]
+    )
+
+    posts = cur.fetchall()
+    conn.close()
+    return posts
+
 def check_if_already_liked(post_id, user_id):
     conn = get_db_connection()
     cur = conn.cursor()

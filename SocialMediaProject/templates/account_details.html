@@ -1,11 +1,26 @@
 {% extends 'layout.html' %} {% block content %}
 <div class="container">
-  <h1>Profile</h1>
-  <p><strong>First name:</strong> {{ details[1] }}</p>
-  <p><strong>Last name:</strong> {{details[2]}}</p>
-  {% if details[3] %}
-  <p><strong>Middle name:</strong> {{details[3]}}</p>
-  {% endif %}
-  <p><strong>Email:</strong> {{ details[4] }}</p>
+  <div>
+    <h1>Profile</h1>
+    <p><strong>First name:</strong> {{ details[1] }}</p>
+    <p><strong>Last name:</strong> {{details[2]}}</p>
+    {% if details[3] %}
+    <p><strong>Middle name:</strong> {{details[3]}}</p>
+    {% endif %}
+    <p><strong>Email:</strong> {{ details[4] }}</p>
+  </div>
+  <div>
+    {% if posts %} {% for post in posts %}
+    <div class="posts-container">
+      <div class="post-header">
+        <h3>{{ current_user.first_name }} {{ current_user.last_name }}</h3>
+        <span>{{ post[2].split(' ')[0] }}</span>
+      </div>
+      <div class="posts-contents">
+        <p>{{ post[1] }}</p>
+      </div>
+    </div>
+    {% endfor %} {% endif %}
+  </div>
 </div>
 {% endblock%}
