@@ -56,7 +56,6 @@ cur = conn.cursor()
 #     """
 # )
 
-
 cur.execute(
     "select * from likes"
 )

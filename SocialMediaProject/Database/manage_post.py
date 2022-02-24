@@ -27,7 +27,7 @@ def get_likes(post_id):
     cur = conn.cursor()
 
     cur.execute(
-        "SELECT is_like FROM likes WHERE post_id=?",
+        "SELECT COUNT(is_like) FROM likes WHERE post_id=?",
         [post_id]
     )
 
@@ -68,16 +68,15 @@ def get_post_by_id(id):
     conn.close()
     return post
 
-def add_a_like(post_id):
+def add_a_like(user_id, post_id):
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute(
-        "UPDATE likes SET is_like = is_like + 1 WHERE post_id=?",
-        [post_id]
+        "INSERT INTO likes (user_id, post_id, is_like) VALUES (?,?,?)",
+        [user_id, post_id, 1]
     )
 
     conn.commit()
     conn.close()
-
     return True

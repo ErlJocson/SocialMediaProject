@@ -13,7 +13,7 @@ def index():
     posts = []
     for post in get_posts():
         posts.append(post + get_likes(post[0]))
-    print(posts)
+    
     if request.method == "POST":
         content = post_form.content.data
         add_post(
@@ -56,8 +56,8 @@ def post(post_id):
         comment_form = comment_form
     )
 
-@main.route('/add-like/<int:post_id>')
+@main.route('/add-like/<post_id>')
 @login_required
 def like_post(post_id):
-    add_a_like(post_id)
+    add_a_like(current_user.id, post_id)
     return redirect(url_for('main.index'))
