@@ -1,3 +1,4 @@
+from tabnanny import check
 from flask import render_template, request, flash, redirect, url_for, Blueprint
 from flask_login import login_required, current_user
 from .PostForm import *
@@ -71,5 +72,9 @@ def post(post_id):
 @main.route('/add-like/<post_id>')
 @login_required
 def like_post(post_id):
-    add_a_like(current_user.id, post_id)
+    if check_if_already_liked(post_id, current_user.id):
+        add_a_like(current_user.id, post_id)
+        flash('Post liked!', 'success')
+        return redirect(url_for('main.index'))
     return redirect(url_for('main.index'))
+    
