@@ -9,8 +9,7 @@ login_manager.login_view = 'auth.login'
 login_manager.login_message = "Please login to access the page."
 login_manager.login_message_category = 'success'
 
-from .AppRoutes import Main, Auth, Admin, Profile
+from .AppRoutes import Main, Auth, Profile
 app.register_blueprint(Main.main, url_prefix='/')
-app.register_blueprint(Admin.admin, url_prefix='/admin')
 app.register_blueprint(Auth.auth, url_prefix='/authentication')
 app.register_blueprint(Profile.user, url_prefix='/user')

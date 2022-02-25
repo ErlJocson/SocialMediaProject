@@ -24,6 +24,10 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='admin.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='friends.css') }}"
+    />
     <title>Social | {{ title }}</title>
   </head>
   <body>
@@ -35,20 +39,9 @@
     {% endfor %} {% endif %} {% endwith %} {% if current_user.is_authenticated
     %}
     <nav>
-      {% if current_user.email == 'jocsonerl@gmail.com' %}
-      <div style="margin-left: 20px">
-        <a href="{{ url_for('admin.users_table') }}" class="nav-items">Users</a>
-        <a href="{{ url_for('admin.users_posts') }}" class="nav-items">Posts</a>
-        <a href="{{ url_for('admin.users_comments') }}" class="nav-items"
-          >Comments</a
-        >
-      </div>
-      {% else %}
       <div class="left-container">
         <a href="{{ url_for('main.index') }}" class="nav-items">social</a>
-        <!-- <a href="#" class="nav-items">messages</a> -->
       </div>
-      {% endif %}
       <div class="right-container">
         <a href="{{ url_for('user.profile') }}" class="nav-items">profile</a>
         <a href="{{ url_for('user.friend_list') }}" class="nav-items"

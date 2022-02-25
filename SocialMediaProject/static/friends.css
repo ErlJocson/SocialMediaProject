@@ -1,0 +1,20 @@
+.friend-list-container {
+  width: 90%;
+  margin: 20px auto 0 auto;
+  min-height: calc(100vh - 80px);
+}
+
+.friend-list-container section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.friend-list-container section div {
+  width: 30%;
+  margin: auto;
+}
+
+.friend-list-container section div h3 {
+  text-align: center;
+  border-bottom: 1px solid gray;
+}

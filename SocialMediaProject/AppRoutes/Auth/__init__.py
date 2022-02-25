@@ -24,9 +24,6 @@ def login():
             
         login_user(load_user(user_to_login[0]))
         flash(f'Welcome back {user_to_login[1]}!', 'success')
-
-        if email == 'jocsonerl@gmail.com':
-            return redirect(url_for('admin.users_table'))
         return redirect(url_for('main.index'))
 
     return render_template(
