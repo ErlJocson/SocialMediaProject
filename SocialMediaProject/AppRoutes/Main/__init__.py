@@ -33,18 +33,6 @@ def index():
         posts=posts
     )
 
-@main.route('/profile')
-@login_required
-def profile():
-    details = check_if_email_exist(current_user.email)
-    posts = get_user_post(current_user.id)
-    return render_template(
-        'account_details.html',
-        title='Account',
-        details=details,
-        posts = posts
-    )
-
 @main.route('/post/<int:post_id>', methods=['GET', 'POST'])
 @login_required
 def post(post_id):
