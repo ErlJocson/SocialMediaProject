@@ -4,23 +4,27 @@
     <div>
       <h3>Following</h3>
       <div>
-        {% for user in all_users %}
-        <p>{{ user[1] }} {{ user[2] }}</p>
+        {% for user in following %}
+        <p>
+          <a class="cross" href="#">&#x2716;</a> {{ user[1] }} {{ user[2] }}
+        </p>
         {% endfor %}
+      </div>
+    </div>
+    <div>
+      <h3>Other users</h3>
+      <div>
+        {% for user in all_users %} {% if not user[0] == current_user.id %}
+        <p>
+          <a class="check" href="#">&#x2714;</a> {{ user[1] }} {{ user[2] }}
+        </p>
+        {% endif %} {% endfor %}
       </div>
     </div>
     <div>
       <h3>Followers</h3>
       <div>
-        {% for user in all_users %}
-        <p>{{ user[1] }} {{ user[2] }}</p>
-        {% endfor %}
-      </div>
-    </div>
-    <div>
-      <h3>Other peoples</h3>
-      <div>
-        {% for user in all_users %}
+        {% for user in followers %}
         <p>{{ user[1] }} {{ user[2] }}</p>
         {% endfor %}
       </div>

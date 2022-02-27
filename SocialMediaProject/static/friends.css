@@ -17,6 +17,8 @@
 
 .friend-list-container section div h3 {
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   border-bottom: 1px solid gray;
 }
 
@@ -28,8 +30,8 @@
 
 .friend-list-container section div div p {
   padding: 8px;
-  margin: 6px 0;
-  transition: all 250ms;
+  margin-top: 6px;
+  transition: all 1000ms;
   background-color: white;
   cursor: pointer;
   box-shadow: var(--shadow);
@@ -38,4 +40,17 @@
 .friend-list-container section div div p:hover {
   background: var(--light-gradient-color);
   border-radius: 10px;
+}
+
+.friend-list-container section div div p a {
+  color: black;
+  text-decoration: none;
+}
+
+.check:hover {
+  color: var(--blue-color);
+}
+
+.cross:hover {
+  color: var(--red-color);
 }
