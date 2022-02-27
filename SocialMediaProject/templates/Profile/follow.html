@@ -6,19 +6,14 @@
       <div>
         {% for user in following %}
         <p>
-          <a class="cross" href="#">&#x2716;</a> {{ user[1] }} {{ user[2] }}
+          <a
+            class="cross"
+            href="{{ url_for('user.unfollow_user', other_user=user[0]) }}"
+            >&#x2716;</a
+          >
+          {{ user[1] }} {{ user[2] }}
         </p>
         {% endfor %}
-      </div>
-    </div>
-    <div>
-      <h3>Other users</h3>
-      <div>
-        {% for user in all_users %} {% if not user[0] == current_user.id %}
-        <p>
-          <a class="check" href="#">&#x2714;</a> {{ user[1] }} {{ user[2] }}
-        </p>
-        {% endif %} {% endfor %}
       </div>
     </div>
     <div>
@@ -27,6 +22,21 @@
         {% for user in followers %}
         <p>{{ user[1] }} {{ user[2] }}</p>
         {% endfor %}
+      </div>
+    </div>
+    <div>
+      <h3>Other users</h3>
+      <div>
+        {% for user in all_users %} {% if not user[0] == current_user.id %}
+        <p>
+          <a
+            class="check"
+            href="{{ url_for('user.follow_user', other_user=user[0]) }}"
+            >&#x2714;</a
+          >
+          {{ user[1] }} {{ user[2] }}
+        </p>
+        {% endif %} {% endfor %}
       </div>
     </div>
   </section>

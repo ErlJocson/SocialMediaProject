@@ -34,3 +34,27 @@ def get_followers(users_id):
 
     conn.close()
     return followers
+
+def follow_a_user(user_id, followed):
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute(
+        "INSERT INTO following (user_id, followed) VALUES (?,?)",
+        [user_id, followed]
+    )
+
+    conn.commit()
+    conn.close()
+
+def unfollow_a_user(user_id, followed):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    
+    cur.execute(
+        'DELETE FROM following WHERE user_id=? AND followed=?',
+        [user_id, followed]
+    )
+
+    conn.commit()
+    conn.close()
