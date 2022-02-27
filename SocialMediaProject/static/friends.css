@@ -12,9 +12,30 @@
 .friend-list-container section div {
   width: 30%;
   margin: auto;
+  min-height: 50vh;
 }
 
 .friend-list-container section div h3 {
   text-align: center;
   border-bottom: 1px solid gray;
+}
+
+.friend-list-container section div div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.friend-list-container section div div p {
+  padding: 8px;
+  margin: 6px 0;
+  transition: all 250ms;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.friend-list-container section div div p:hover {
+  background: var(--light-gradient-color);
+  border-radius: 10px;
 }

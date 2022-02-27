@@ -1,0 +1,30 @@
+{%extends "layout.html"%} {% block content %}
+<div class="friend-list-container">
+  <section>
+    <div>
+      <h3>Following</h3>
+      <div>
+        {% for user in all_users %}
+        <p>{{ user[1] }} {{ user[2] }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div>
+      <h3>Followers</h3>
+      <div>
+        {% for user in all_users %}
+        <p>{{ user[1] }} {{ user[2] }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div>
+      <h3>Other peoples</h3>
+      <div>
+        {% for user in all_users %}
+        <p>{{ user[1] }} {{ user[2] }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

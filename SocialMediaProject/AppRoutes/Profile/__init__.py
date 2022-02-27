@@ -17,10 +17,12 @@ def profile():
         posts = posts
     )
 
-@user.route('/friend-list')
+@user.route('/follow-list')
 @login_required
-def friend_list():
+def follow():
+    all_users = get_all_users()
     return render_template(
-        "Profile/friends.html",
-        title='Friends'
+        "Profile/follow.html",
+        title='Friends',
+        all_users=all_users
     )

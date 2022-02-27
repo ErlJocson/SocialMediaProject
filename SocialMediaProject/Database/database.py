@@ -58,12 +58,12 @@ cur.execute(
 
 cur.execute(
     """
-        CREATE TABLE friends(
+        CREATE TABLE following(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER NOT NULL,
-            friends_id INTEGER NOT NULL,
+            followed INTEGER NOT NULL,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-            FOREIGN KEY (friends_id) REFERENCES users(id) ON DELETE CASCADE
+            FOREIGN KEY (followed) REFERENCES users(id) ON DELETE CASCADE
         );
     """
 )
