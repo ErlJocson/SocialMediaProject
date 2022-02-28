@@ -1,12 +1,17 @@
+bcrypt==3.2.0
 bidict==0.21.4
+cffi==1.15.0
 click==8.0.3
 Flask==2.0.2
+Flask-Bcrypt==0.7.1
 Flask-Login==0.5.0
 Flask-WTF==1.0.0
 itsdangerous==2.0.1
 Jinja2==3.0.3
 MarkupSafe==2.0.1
+pycparser==2.21
 python-engineio==4.3.1
 python-socketio==5.5.2
+six==1.16.0
 Werkzeug==2.0.3
 WTForms==3.0.1
