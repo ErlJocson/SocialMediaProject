@@ -68,3 +68,10 @@ def like_post(post_id):
     remove_like(post_id, current_user.id)
     flash('You removed the like!', 'danger')
     return redirect(url_for('main.index'))
+
+@main.route('/delete-post/<post_id>')
+@login_required
+def delete_post(post_id):
+    remove_post(post_id)
+    flash('Post deleted!', 'success')
+    return redirect(url_for('user.profile'))

@@ -5,6 +5,14 @@
   box-shadow: 0 10px 10px #888888;
   background-color: var(--white);
   border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+.posts-container a {
+  text-decoration: none;
+  color: black;
+  padding: 5px 20px;
+  letter-spacing: 1.5px;
 }
 
 .post-header {

@@ -19,6 +19,12 @@
       <div class="posts-contents">
         <p>{{ post[1] }}</p>
       </div>
+      <a
+        href="{{ url_for('main.delete_post', post_id=post[0]) }}"
+        class="btn danger"
+      >
+        Delete
+      </a>
     </div>
     {% endfor %} {% endif %}
   </div>

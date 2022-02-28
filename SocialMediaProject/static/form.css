@@ -42,6 +42,7 @@ form p {
   border-radius: 10px;
   width: 50%;
   padding: 5px 0;
+  text-transform: uppercase;
 }
 
 .text {
