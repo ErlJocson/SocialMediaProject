@@ -21,6 +21,12 @@
       <span>{{ comment[2].split(' ')[0] }}</span>
     </div>
     <p>{{ comment[1] }}</p>
+    <a
+      href="{{ url_for('main.delete_comment', comment_id=comment[0]) }}"
+      class="btn danger"
+    >
+      Delete
+    </a>
   </div>
   {% endfor %}
 </div>

@@ -31,3 +31,15 @@ def add_a_comment(details):
 
     conn.commit()
     conn.close()
+
+def delete_user_comment(comment_id):
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute(
+        'DELETE FROM comments WHERE id=?',
+        [comment_id]
+    )
+
+    conn.commit()
+    conn.close()

@@ -75,3 +75,10 @@ def delete_post(post_id):
     remove_post(post_id)
     flash('Post deleted!', 'success')
     return redirect(url_for('user.profile'))
+
+@main.route('/delete-comment/<comment_id>')
+@login_required
+def delete_comment(comment_id):
+    delete_user_comment(comment_id)
+    flash('Comment deleted!', 'success')
+    return redirect(url_for('main.index'))
