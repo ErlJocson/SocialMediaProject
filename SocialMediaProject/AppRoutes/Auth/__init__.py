@@ -3,6 +3,7 @@ from .AuthForms import *
 from SocialMediaProject.Database.manage_users import *
 from flask_login import login_user, logout_user
 from .loading_user import load_user
+from SocialMediaProject import bcrypt
 
 auth = Blueprint('auth', __name__)
 
@@ -18,10 +19,10 @@ def login():
             flash('Email does not exist!', 'danger')
             return redirect(url_for('auth.login'))
 
-        if not user_to_login[-1] == password:
+        if not bcrypt.check_password_hash(user_to_login[-1], password):
             flash('Wrong password!', 'danger')
             return redirect(url_for('auth.login'))
-            
+
         login_user(load_user(user_to_login[0]))
         flash(f'Welcome back {user_to_login[1]}!', 'success')
         return redirect(url_for('main.index'))
@@ -50,14 +51,15 @@ def register():
         if password != confirm_password:
             flash('Passwords does not match!', 'danger')
             return redirect(url_for('auth.register'))
-        
+
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
         new_user_id = adding_new_users(
             {
                 "email":email,
                 "first_name":first_name,
                 "middle_name":middle_name,
                 "last_name":last_name,
-                "password":password
+                "password":hashed_password
             }
         )
 
