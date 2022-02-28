@@ -59,7 +59,6 @@ cur = conn.cursor()
 # cur.execute(
 #     """
 #         CREATE TABLE following(
-#             id INTEGER PRIMARY KEY AUTOINCREMENT,
 #             user_id INTEGER NOT NULL,
 #             followed INTEGER NOT NULL,
 #             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
@@ -68,20 +67,21 @@ cur = conn.cursor()
 #     """
 # )
 
+
+
 # cur.execute(
-#     """
-#         INSERT INTO following (user_id, followed) VALUES (?,?)
-#     """, [1, 2]
-# )
+#         """
+#             SELECT following.user_id, users.first_name, users.last_name
+#             FROM following INNER JOIN users ON following.user_id=users.id
+#             WHERE following.followed=?
+#         """,
+#         [1]
+#     )
+
 
 cur.execute(
-        """
-            SELECT following.followed, users.first_name, users.last_name
-            FROM following INNER JOIN users ON following.followed=users.id
-            WHERE following.user_id=?
-        """,
-        [1]
-    )
+    'select * from following'
+)
 
 print(cur.fetchall())
 

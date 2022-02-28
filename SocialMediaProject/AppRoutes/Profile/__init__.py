@@ -24,9 +24,9 @@ def follow():
     all_users = get_all_users()
     following = get_following(current_user.id)
     followers = get_followers(current_user.id)
-
+    
     for user in all_users:
-        if user[:3] in following or user[:3] in followers:
+        if user[:3] in following:
             all_users.remove(user)
 
     return render_template(

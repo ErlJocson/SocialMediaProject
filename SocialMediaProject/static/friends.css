@@ -12,7 +12,7 @@
 .friend-list-container section div {
   width: 30%;
   margin: auto;
-  min-height: 50vh;
+  min-height: 30vh;
 }
 
 .friend-list-container section div h3 {
